@@ -6,7 +6,7 @@
 #read expdir
 
 #scp "$0" "expdir"
-
+read -p "Please provide the server host. (e.g. zlinsco@pc533.emulab.net)" user
 
 # Install miniconda
 echo "Installing miniconda"
@@ -50,15 +50,17 @@ conda install nb_conda
 while true; 
 do
 
-read -p "Do you wish to install this program? [y,n]" yn
+read -p "Do you wish to start a Jupyter Notebook? [y,n]" yn
 case $yn in 
-	[Yy]* ) readarray -t lines < <(jupyter notebook --no-browser --port=5900)
+	[Yy]* ) cmd1="jupyter notebook --no-browser --port=5900";
+		cmd2="xterm -hold -e ssh -L 5555:localhost:$user";
+		readarray -t lines < <($cmd1);
 		for line in "${lines[@]}"; 
 		do
 			if printf '%s\0' "${lines[@]}" | grep -Fxqz -- 'http://localhost:5900';
 			then
 				jup_link=$"{lines[@]}";
-				echo $jup_link;
+				bash -c $cmd2
 			fi
 		done
 		break;;
