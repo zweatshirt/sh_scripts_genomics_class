@@ -1,11 +1,6 @@
 #usr/bin/env bash
 
-# Future implementation:
-# echo "Enter the directory to send this script to, 
-#so it can be executed (e.g. zlinsco@pc533.emulab.net:users/zlinsco):"
-#read expdir
 
-#scp "$0" "expdir"
 read -p "Please provide the server host (e.g. zlinsco@pc533.emulab.net): " user
 
 # Install miniconda
