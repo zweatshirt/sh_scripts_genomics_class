@@ -1,7 +1,7 @@
 #usr/bin/env bash
 
 
-read -p "Please provide the server host (e.g. zlinsco@pc533.emulab.net): " user
+#read -p "Please provide the server host (e.g. zlinsco@pc533.emulab.net): " user
 
 # Install miniconda
 echo "Installing miniconda."
@@ -39,7 +39,8 @@ conda install -c conda-forge nb_conda_kernels
 conda install nb_conda
 
 
-# Jupyter Notebook install
+# Future implementation:
+
 #ssh -X zlinsco@node0
 #while true; 
 #do
