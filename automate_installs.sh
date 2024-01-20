@@ -6,10 +6,10 @@
 #read expdir
 
 #scp "$0" "expdir"
-read -p "Please provide the server host. (e.g. zlinsco@pc533.emulab.net)" user
+read -p "Please provide the server host (e.g. zlinsco@pc533.emulab.net): " user
 
 # Install miniconda
-echo "Installing miniconda"
+echo "Installing miniconda."
 mkdir -p ~/miniconda3
 
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
@@ -22,9 +22,7 @@ rm -rf ~/miniconda3/miniconda.sh
 ~/miniconda3/bin/conda init zsh
 
 # Ask user for environment name they want
-echo "Enter the name for the conda env:"
-read name
-
+read -p "Enter the name for the conda env: " name
 
 conda create --name $name python=3.11
 conda init bash
@@ -46,29 +44,33 @@ conda install -c conda-forge nb_conda_kernels
 conda install nb_conda
 
 
-# Prompt user if they want to open Notebook
-while true; 
-do
+# Jupyter Notebook install
+#ssh -X zlinsco@node0
+#while true; 
+#do
 
-read -p "Do you wish to start a Jupyter Notebook? [y,n]" yn
-case $yn in 
-	[Yy]* ) cmd1="jupyter notebook --no-browser --port=5900";
-		cmd2="xterm -hold -e ssh -L 5555:localhost:$user";
-		readarray -t lines < <($cmd1);
-		for line in "${lines[@]}"; 
-		do
-			if printf '%s\0' "${lines[@]}" | grep -Fxqz -- 'http://localhost:5900';
-			then
-				jup_link=$"{lines[@]}";
-				bash -c $cmd2
-			fi
-		done
-		break;;
-	[Nn]* ) echo "Cool, see ya later then...";
-		exit;;
+#read -p "Do you wish to start a Jupyter Notebook? [y,n] " yn
+#case "$yn" in
+#        Y|y )   cmd1="jupyter notebook --no-browser --port=5910"
+#                cmd2="ssh -L 5555:localhost:5910 $user"
+#                cmd3="xterm -hold -e $cmd2"
+#                readarray -t lines < <($cmd)
+#                for line in "${lines[@]}";
+#                do
+#                        echo $line
+#                        if [[ $line = *"localhost:"* ]];
+#                        then
+#                                echo $line
+#                                jup_link=$line
+#
+#                       fi
+#                done
 
-esac
+#                bash -c $cmd3;;
 
-done
+#        N|n )   echo "Cool, see ya later..."
+#                break;;
+#esac
 
+#done       
 
