@@ -47,20 +47,26 @@ conda install nb_conda
 
 
 # Prompt user if they want to open Notebook
-echo "Open Jupyter Notebook? [y/n]"
-read ans
-if [ "$ans" == "${ans#[Yy]}" ]:
-then
-	readarray -t lines < <(jupyter notebook --no-browser --port=5900)
-	for line in "${lines[@]}"; do
-		if printf '%s\0' "${lines[@]}" | grep -Fxqz -- 'http://localhost:5900';
-		then
-			jup_link=$"{lines[@]}"
-			echo $jup_link
-else
-	echo "Cool, see ya later then."
-fi
+while true; 
+do
 
+read -p "Do you wish to install this program? [y,n]" yn
+case $yn in 
+	[Yy]* ) readarray -t lines < <(jupyter notebook --no-browser --port=5900)
+		for line in "${lines[@]}"; 
+		do
+			if printf '%s\0' "${lines[@]}" | grep -Fxqz -- 'http://localhost:5900';
+			then
+				jup_link=$"{lines[@]}";
+				echo $jup_link;
+			fi
+		done
+		break;;
+	[Nn]* ) echo "Cool, see ya later then...";
+		exit;;
 
+esac
+
+done
 
 
