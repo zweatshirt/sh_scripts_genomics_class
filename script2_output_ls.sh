@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
-if [ ! -d "$PWD/data" ];
-then
-	mkdir "$PWD/data"
-else
-	echo "folder already exists"
-fi
+# This script lists all the directories of the current directory
+# and stores the list in a file named output.txt
 
 out="output.txt"
 stars="*****************************"

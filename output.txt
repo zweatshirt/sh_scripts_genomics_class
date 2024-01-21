@@ -1,6 +1,0 @@
-*****************************
-automate_installs.sh
-data
-good_mk_folder.sh
-make_folder.sh
-output.txt
