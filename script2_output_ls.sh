@@ -11,7 +11,7 @@ then
 	while true;
 	do
 
-	read -p "Do you want to make an output file of the list of dirs in the pwd? [y/n] " yn
+	read -p "Do you want to make an output file of the list of dirs and files in the pwd? [y/n] " yn
 	case "$yn" in
 		Y|y )
 			echo "$stars" >> "$PWD/$out"

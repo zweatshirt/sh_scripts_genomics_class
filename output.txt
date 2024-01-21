@@ -1,0 +1,10 @@
+*****************************
+etc_output.txt
+ls
+output.txt
+script1_filename.sh
+script2_mk_dir.sh
+script2_output_ls.sh
+script3_flags_example.sh
+script4_installs.sh
+w
