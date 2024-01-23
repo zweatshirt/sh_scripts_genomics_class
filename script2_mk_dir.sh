@@ -9,5 +9,5 @@ if [ ! -d "$PWD/$dir" ];
 	then
         	mkdir "$PWD/$dir"
   	else
-         	echo "Directory already exists"
+         	echo "Directory $dir already exists"
 fi
