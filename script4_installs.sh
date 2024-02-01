@@ -18,8 +18,8 @@ rm -rf ~/miniconda3/miniconda.sh
 
 # Ask user for environment name they want
 read -p "Enter the name for the conda env: " name
-
-conda create --name $name python=3.11
+read -p "Enter the python version to use: " ver
+conda create --name $name python=$ver
 conda init bash
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate $name
@@ -38,7 +38,7 @@ conda install -c conda-forge notebook
 conda install -c conda-forge nb_conda_kernels
 conda install nb_conda
 
-
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cpuonly -c pytorch
 # Future implementation:
 
 #ssh -X zlinsco@node0
