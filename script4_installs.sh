@@ -1,7 +1,13 @@
-#usr/bin/env bash
+#!/bin/env bash
 
 
 #read -p "Please provide the server host (e.g. zlinsco@pc533.emulab.net): " user
+
+# Update, htop, and screen install
+echo "Updating... Additionally, installing htop and screen"
+sudo apt-get update
+sudo install htop
+sudo install screen
 
 # Install miniconda
 echo "Installing miniconda."
@@ -12,25 +18,20 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 
 rm -rf ~/miniconda3/miniconda.sh
+source ~/miniconda3/etc/profile.d/conda.sh
 
-~/miniconda3/bin/conda init bash
-~/miniconda3/bin/conda init zsh
+conda_d=~/miniconda3/bin/conda
+if test -d $conda_d; then
+  $conda_d init bash
+  $conda_d init zsh
+fi
+
 
 # Ask user for environment name they want
 read -p "Enter the name for the conda env: " name
 read -p "Enter the python version to use: " ver
 conda create --name $name python=$ver
-conda init bash
-source ~/miniconda3/etc/profile.d/conda.sh
 conda activate $name
-
-
-# Update, htop, and screen install
-echo "Updating... Additionally, installing htop and screen"
-sudo apt-get update
-sudo install htop
-sudo install screen
-
 
 # Jupyter Notebook install
 echo "Time to install jupyter notebook."
