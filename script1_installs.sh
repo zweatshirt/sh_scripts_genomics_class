@@ -18,14 +18,12 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 
 rm -rf ~/miniconda3/miniconda.sh
+
+echo 'export PATH="~/miniconda/bin:$PATH"' >> ~/.bashrc
+
+source ~/.bashrc
+
 source ~/miniconda3/etc/profile.d/conda.sh
-
-conda_d=~/miniconda3/bin/conda
-if test -d $conda_d; then
-  $conda_d init bash
-  $conda_d init zsh
-fi
-
 
 # Ask user for environment name they want
 read -p "Enter the name for the conda env: " name
@@ -70,4 +68,9 @@ conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cpuonly -c 
 #esac
 
 #done       
+
+# run this by using source
+# do pip uninstall traitlets
+# pip install traitlets==5.9.0
+# if running python 3.9
 
