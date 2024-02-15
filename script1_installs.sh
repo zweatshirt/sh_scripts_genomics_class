@@ -1,6 +1,8 @@
 #!/bin/env bash
 
 
+echo "run this by using source NOT ./script1_installs.sh"
+
 #read -p "Please provide the server host (e.g. zlinsco@pc533.emulab.net): " user
 
 # Update, htop, and screen install
@@ -70,7 +72,7 @@ conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cpuonly -c 
 #done       
 
 # run this by using source
-# do pip uninstall traitlets
+#  pip uninstall traitlets
 # pip install traitlets==5.9.0
 # if running python 3.9
 
