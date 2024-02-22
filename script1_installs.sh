@@ -39,7 +39,18 @@ conda install -c conda-forge notebook
 conda install -c conda-forge nb_conda_kernels
 conda install nb_conda
 
+if [ $ver = 3.9 ];
+then
+  pip uninstall traitlets
+  pip install traitlets==5.9.0
+fi
+
 conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cpuonly -c pytorch
+
+#read -p "Would you like to download GPU support? [y, n]" yn
+#case "$yn" in
+#  Y|y )	 
+
 # Future implementation:
 
 #ssh -X zlinsco@node0
