@@ -1,5 +1,6 @@
 #!/bin/env bash
 
+# run this by using source
 
 echo "run this by using source NOT ./script1_installs.sh"
 
@@ -81,9 +82,3 @@ conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cpuonly -c 
 #esac
 
 #done       
-
-# run this by using source
-#  pip uninstall traitlets
-# pip install traitlets==5.9.0
-# if running python 3.9
-
